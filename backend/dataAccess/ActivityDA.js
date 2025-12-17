@@ -16,7 +16,7 @@ async function getActivityById(id) {
 }
 
 async function getActivities(teacherId) {
-  return await Activity.findAll({ where: { TeacherId: teacherId } });
+   return await Activity.findAll({ where: { ProfessorId: teacherId } });
 }
 
 async function deleteActivity(id) {

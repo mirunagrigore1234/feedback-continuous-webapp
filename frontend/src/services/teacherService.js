@@ -1,5 +1,5 @@
 //Funcții pentru login/înregistrare și gestionarea token-ului JWT
-const API = process.env.REACT_APP_API_URL || "http://localhost:9000/api";
+const API = process.env.REACT_APP_API_URL || "http://localhost:9001/api";
 
 function getToken() {
   return localStorage.getItem("token");

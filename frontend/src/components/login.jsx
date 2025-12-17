@@ -20,12 +20,12 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const API = process.env.REACT_APP_API_URL || "http://localhost:9000/api";
+      const API = process.env.REACT_APP_API_URL || "http://localhost:9001/api";
 
       const r = await fetch(`${API}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ Email: email.trim(), Password: password })
+        body: JSON.stringify({ email: email.trim(), password: password })
       });
 
       if (!r.ok) {

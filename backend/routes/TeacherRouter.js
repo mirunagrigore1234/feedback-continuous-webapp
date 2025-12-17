@@ -13,11 +13,13 @@ let teacherRouter = express.Router();
 /* CREATE */
 teacherRouter.route("/").post(async (req, res) => {
   try {
+    console.log("BODY RECEIVED:", req.body);
     const teacher = await createTeacher(req.body);
     res.status(201).json(teacher);
   } catch (err) {
-    console.warn(err.stack);
-    res.status(500).json({ message: "server error" });
+   console.log("CREATE TEACHER ERROR:", err);
+  console.log("STACK:", err?.stack);
+  return res.status(500).json({ message: err?.message || "server error" });
   }
 });
 
