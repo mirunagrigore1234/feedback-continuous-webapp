@@ -23,4 +23,29 @@ continuous-feedback-app/
 - Profesor coordonator: [nume profesor]
 
 ## Instrucțiuni
-Repo-ul este în fază de structură inițială. Instrucțiuni de rulare vor fi adăugate ulterior.
+Quick setup (development):
+
+1. Copy env example and edit values:
+
+```powershell
+cp .env.example .env
+```
+
+2. Start services with Docker Compose (requires Docker):
+
+```powershell
+docker-compose up --build
+```
+
+3. Backend will be available at `http://localhost:3000` (if configured so).
+
+Useful files added (see `docs/` and repo root):
+
+- `docs/openapi.yaml` — OpenAPI/Swagger spec for core endpoints
+- `.env.example` — example environment variables
+- `backend/Dockerfile` — Dockerfile for backend service
+- `docker-compose.yml` — compose to run Postgres + backend
+- `docs/TEST_PLAN.md` — manual + recommended automated tests
+- `backend/tests/api.test.js` — test stub (Jest + supertest)
+- `docs/CURL_EXAMPLES.md` — curl commands for manual testing
+

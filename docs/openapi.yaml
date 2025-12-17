@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Feedback Continuous Webapp API
+  version: '1.0.0'
+  description: API specification for the Feedback Continuous Webapp (teacher/student flows)
+servers:
+  - url: http://localhost:3000
+paths:
+  /activities:
+    post:
+      summary: Create an activity (teacher)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivityCreate'
+      responses:
+        '201':
+          description: Activity created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+  /activities/{activityId}/join:
+    post:
+      summary: Join an activity with an access code (student)
+      parameters:
+        - in: path
+          name: activityId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+      responses:
+        '200':
+          description: Joined
+  /activities/{activityId}/feedback:
+    post:
+      summary: Submit anonymous feedback (student)
+      parameters:
+        - in: path
+          name: activityId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackCreate'
+      responses:
+        '201':
+          description: Feedback received
+    get:
+      summary: Get feedback timeline for an activity (teacher)
+      parameters:
+        - in: path
+          name: activityId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Feedback timeline
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feedback'
+components:
+  schemas:
+    ActivityCreate:
+      type: object
+      required:
+        - title
+        - date
+        - durationMinutes
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date-time
+        durationMinutes:
+          type: integer
+    Activity:
+      allOf:
+        - $ref: '#/components/schemas/ActivityCreate'
+        - type: object
+          properties:
+            id:
+              type: string
+            accessCode:
+              type: string
+    FeedbackCreate:
+      type: object
+      required:
+        - mood
+      properties:
+        mood:
+          type: string
+          enum: [happy, sad, surprised, confused]
+        timestamp:
+          type: string
+          format: date-time
+    Feedback:
+      type: object
+      properties:
+        id:
+          type: string
+        activityId:
+          type: string
+        mood:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
