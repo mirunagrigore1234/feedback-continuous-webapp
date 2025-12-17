@@ -63,3 +63,5 @@ teacherRouter.route("/email/:email").get(authMiddleware, async (req, res) => {
 });
 
 export default teacherRouter;
+
+

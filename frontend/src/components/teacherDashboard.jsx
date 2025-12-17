@@ -40,7 +40,7 @@ export default function TeacherDashboard() {
       const data = await activityService.getActivities();
       setActivities(data);
     } catch (e) {
-      setError("Nu pot încărca activitățile. Verifică dacă ești logat.");
+      setError("Cannot load activities. Please check if you are logged in.");
     } finally {
       setLoading(false);
     }
@@ -58,10 +58,10 @@ export default function TeacherDashboard() {
     setError("");
 
     // validări simple
-    if (!title.trim()) return setError("Completează titlul activității.");
-    if (!description.trim()) return setError("Completează descrierea.");
-    if (!startTime) return setError("Alege data și ora de start.");
-    if (!/^[A-Z0-9]{6}$/.test(accessCode)) return setError("Access code trebuie să aibă exact 6 caractere (A-Z, 0-9).");
+    if (!title.trim()) return setError("Please enter the activity title.");
+    if (!description.trim()) return setError("Please enter the activity description.");
+    if (!startTime) return setError("Please choose the start date and time.");
+    if (!/^[A-Z0-9]{6}$/.test(accessCode)) return setError("Access code must be exactly 6 characters (A-Z, 0-9).");
 
     const start = new Date(startTime);
     const end = new Date(start.getTime() + Number(durationMins) * 60000);
@@ -84,7 +84,7 @@ export default function TeacherDashboard() {
 
       await load();
     } catch (e) {
-      setError("Nu am putut crea activitatea (posibil cod duplicat).");
+      setError("Cannot create activity (possibly duplicate code).");
     }
   }
 
@@ -95,16 +95,11 @@ export default function TeacherDashboard() {
         <div className="sideProfile">
           <div className="avatar">👨‍🏫</div>
           <div>
-            <div className="sideName">Prof.</div>
-            <div className="sideDept">Dept.</div>
+            <div className="sideName">Welcome!</div>
           </div>
         </div>
 
         <nav className="sideNav">
-          <button className="sideItem">Dashboard</button>
-          <button className="sideItem sideItemActive">Activities</button>
-          <button className="sideItem">Reports</button>
-          <button className="sideItem">Settings</button>
         </nav>
 
         <div className="sideBottom">
@@ -129,7 +124,6 @@ export default function TeacherDashboard() {
               <span className="dotGreen" />
               {activeCount} Active Sessions
             </div>
-            <button className="iconBtn">🔔</button>
           </div>
         </div>
 
@@ -216,10 +210,6 @@ export default function TeacherDashboard() {
                 <div className="mutedSmall">Showing {activities.length} sessions</div>
               </div>
 
-              <div className="searchRow">
-                <input className="inputDash" placeholder="Search sessions..." />
-                <button className="iconBtn">⚙️</button>
-              </div>
             </div>
 
             <div className="table">
@@ -268,15 +258,6 @@ export default function TeacherDashboard() {
       </div>
 
       <div className="cell" style={{ textAlign: "right" }}>
-        <button
-          className="iconBtn"
-          onClick={(e) => {
-            e.stopPropagation(); // ✅ nu navighează când apeși pe ⋮
-            // aici poți pune meniul tău ulterior
-          }}
-        >
-          ⋮
-        </button>
 
         <button
           className="btn btnSoft"

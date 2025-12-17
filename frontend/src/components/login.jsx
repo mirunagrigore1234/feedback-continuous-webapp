@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
 
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
@@ -15,8 +14,8 @@ export default function Login() {
     e.preventDefault();
     setError("");
 
-    if (!email.trim()) return setError("Completează email-ul.");
-    if (!password) return setError("Completează parola.");
+    if (!email.trim()) return setError("Please enter your email.");
+    if (!password) return setError("Please enter your password.");
 
     setLoading(true);
     try {
@@ -30,7 +29,7 @@ export default function Login() {
 
       if (!r.ok) {
         const msg = await r.json().catch(() => ({}));
-        throw new Error(msg.message || "Email sau parolă greșite.");
+        throw new Error(msg.message || "Wrong email or password.");
       }
 
       const data = await r.json(); // { token }
@@ -98,13 +97,6 @@ export default function Login() {
               </button>
             </div>
 
-            <div className="loginRow">
-              <div />
-              <button type="button" className="loginLink" onClick={() => alert("Not implemented")}>
-                Forgot Password?
-              </button>
-            </div>
-
             <button className="loginBtn" disabled={loading}>
               {loading ? "Logging in..." : "Log In  →"}
             </button>
@@ -116,9 +108,6 @@ export default function Login() {
         </div>
       </div>
 
-      <div className="loginBottom">
-        Need help accessing your account? <span className="loginLinkStrong">Contact Support</span>
-      </div>
       <div className="loginFooter">© 2025 CourseFeedback. All rights reserved.</div>
     </div>
   );
