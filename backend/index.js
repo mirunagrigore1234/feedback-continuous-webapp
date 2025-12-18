@@ -8,7 +8,7 @@ import authRouter from "./routes/authRouter.js";
 import teacherRouter from "./routes/TeacherRouter.js";
 import activityRouter from "./routes/ActivityRouter.js";
 import feedbackRouter from "./routes/FeedbackRouter.js";
-import createDbRouter from "./routes/createDbRouter.js";
+import createDbRouter from "./routes/createDBRouter.js";
 
 dotenv.config();
 
