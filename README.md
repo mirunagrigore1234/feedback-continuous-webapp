@@ -14,10 +14,10 @@ Developed as a team project within a university course.
 ![Landing](Landing_page.png)
 
 ### Student Feedback
-![Landing](Student_feedback.png)
+![Student Feedback](Student_feedback.png)
 
 ### Activity Dashboard
-![Landing](Activity_dashboard.png)
+![Activity Dashboard](Activity_dashboard.png)
 
 ---
 
@@ -31,14 +31,23 @@ The application enables:
 
 ---
 
+## Highlights
+
+- Real-time feedback system using emoji reactions  
+- Anonymous data collection  
+- Teacher dashboards with aggregated insights  
+- Full-stack architecture (React + Node.js + DB)  
+- Dockerized development environment  
+
 ## Project Structure
 
+```text
 continuous-feedback-app/
 ├── docs/ # Documentation, specifications, test plans
 ├── frontend/ # React.js frontend application
 ├── backend/ # Node.js REST API
 └── README.md
-
+```
 
 ---
 
@@ -77,30 +86,36 @@ continuous-feedback-app/
 
 ### Quick setup (development)
 
-1. Copy environment variables example:
+1. Configure environment variables
 
 ```bash
 cp .env.example .env
 ```
-Start services using Docker Compose:
-```bash
-docker-compose up --build
-```
-Backend will be available at:
+#### Backend
 
+```bash
+cd backend
+npm install
+npm start
+```
+
+#### Frontend
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Backend will be available at:
 http://localhost:3000
-(if configured accordingly)
 
 ## Documentation & Useful Files
-docs/openapi.yaml – OpenAPI / Swagger specification for core endpoints
-
-docs/TEST_PLAN.md – Manual and recommended automated tests
-
-docs/CURL_EXAMPLES.md – cURL commands for manual API testing
-
-backend/tests/api.test.js – API test stub (Jest + Supertest)
-
-backend/Dockerfile – Backend service containerization
+- `docs/openapi.yaml` – OpenAPI / Swagger specification  
+- `docs/TEST_PLAN.md` – Manual and automated testing  
+- `docs/CURL_EXAMPLES.md` – cURL examples for API testing  
+- `backend/tests/api.test.js` – API tests (Jest + Supertest)  
+- `backend/Dockerfile` – Backend container configuration  
 
 ## Team
 
