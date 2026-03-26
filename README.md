@@ -8,6 +8,19 @@ Developed as a team project within a university course.
 
 ---
 
+## Demo
+
+### Landing page
+
+
+### Student Feedback
+
+
+### Activity Dashboard
+
+
+---
+
 ## Overview
 
 The application enables:
