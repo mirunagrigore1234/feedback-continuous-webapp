@@ -11,13 +11,13 @@ Developed as a team project within a university course.
 ## Demo
 
 ### Landing page
-
+![Landing](Landing_page.png)
 
 ### Student Feedback
-
+![Landing](Student_feedback.png)
 
 ### Activity Dashboard
-
+![Landing](Activity_dashboard.png)
 
 ---
 
