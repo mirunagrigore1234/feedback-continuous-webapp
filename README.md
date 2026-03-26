@@ -78,11 +78,14 @@ continuous-feedback-app/
 ### Quick setup (development)
 
 1. Copy environment variables example:
-   
-cp .env.example .env
-Start services using Docker Compose:
 
+```bash
+cp .env.example .env
+```
+Start services using Docker Compose:
+```bash
 docker-compose up --build
+```
 Backend will be available at:
 
 http://localhost:3000
